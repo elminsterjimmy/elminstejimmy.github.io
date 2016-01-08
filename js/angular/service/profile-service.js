@@ -1,6 +1,6 @@
 angular.module('grsApp').factory('profileService', profileService);
 
-function profileService(requestService, common, logger, URLConstants) {
+function profileService(requestService, common, logger, URLConstants, Static) {
   logger.info("init profile service.");
 
   var service = {
@@ -23,7 +23,7 @@ function profileService(requestService, common, logger, URLConstants) {
   }
 
   function getAllLocations() {
-    return requestService.request("/frontend/src/main/resources/static/json/static/locations.json");
+    return requestService.request(Static.BaseUrl + Static.json.locations);
   }
 
   return service;

@@ -52,7 +52,13 @@ angular.module('grsApp').
           "Method" : "GET"
         },
       }
-    },
+    }
+  })
+  .constant('Static', {
+    "BaseUrl" : "./json/static",
+    "json" : {
+      "locations" : "/locations.json"
+    }
   })
   .constant('EventConstants', {
     "authAvailableEvent" : 'authAvailableEvent',
