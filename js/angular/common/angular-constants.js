@@ -4,7 +4,7 @@
 angular.module('grsApp').
   constant('URLConstants', {
     "dummy" : {
-      "BaseUrl" : "/frontend/src/main/resources/static",
+      "BaseUrl" : ".",
       "Service" : {
         "Meta" : {
           "Url" : "/json/dummy/meta.json",
