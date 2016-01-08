@@ -1,0 +1,1 @@
+angular.module('grsApp', [ 'ui.router', 'oc.lazyLoad', 'ngAnimate', 'ui.bootstrap', 'ngCookies', 'ngMessages' ]);

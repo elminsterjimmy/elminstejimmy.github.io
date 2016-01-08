@@ -1,0 +1,45 @@
+<div class="row row-sm">
+  <div id="collection" class="col-xs-6 col-sm-4 col-md-3 col-lg-2"  ng-repeat="collection in collections.items">
+    <div class="item">
+      <div class="pos-rlt">
+        <!-- review rank -->
+        <div class="top">
+          <span class="pull-right m-t-sm m-r-sm badge bg-info">{{collection.notification}}</span>
+        </div>
+        <!-- the overlay -->
+        <div class="item-overlay opacity r r-2x bg-black">
+          <div class="text-info padder m-t-sm text-sm">
+            <rating ng-model="collection.rating"></rating>
+          </div>
+          <div class="center text-center m-t-n">
+            <div>
+              <div class="trophy_count_small">
+                <ul class="trophy_count">
+                  <li class="gold">{{collection.trohpy.gold}}</li>
+                  <li class="silver">{{collection.trohpy.silver}}</li>
+                  <li class="bronze">{{collection.trohpy.brozen}}</li>
+                </ul>
+              </div>
+
+              <div class="progress_outer center">
+                <span>{{collection.progress}}%</span>
+                <div style="width: {{collection.progress}}%;"></div>
+              </div>
+            </div>
+          </div>
+          <div class="bottom padder m-b-sm">
+            <a class="pull-right">
+              <rating ng-model="collection.favorite" max="1" state-on="'glyphicon-heart'" state-off="'glyphicon-heart-empty'"></rating>
+            </a>
+          </div>
+        </div>
+        {{collection.cover}}
+        <a href="#"><img ng-src="{{collection.cover}}" alt="" class="r r-2x img-full" ></a>
+      </div>
+      <div class="padder-v">
+        <a class="text-ellipsis">{{collection.title}}</a>
+        <a class="text-ellipsis text-xs text-muted">{{collection.platform}}</a>
+      </div>
+    </div>
+  </div>
+</div>

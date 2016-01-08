@@ -1,0 +1,63 @@
+<header class="bg-white-only header header-md navbar navbar-fixed-top-xs" ng-controller="headerController as vm">
+    <!-- logo -->
+    <div class="navbar-header aside bg-info nav-xs">
+      <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen,open" data-target="#nav,html"> <i
+        class="icon-list"></i>
+      </a> <a href="index.html" class="navbar-brand text-lt"> <i class="icon-earphones"></i> <img src="images/logo.png"
+        alt="." class="hide"> <span class="hidden-nav-xs m-l-sm">Game</span>
+      </a> <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".user"> <i class="icon-settings"></i>
+      </a>
+    </div>
+    <!-- toggle -->
+    <ul class="nav navbar-nav hidden-xs">
+      <li><a href="#nav,.navbar-header" data-toggle="class:nav-xs,nav-xs" class="text-muted"> <i
+          class="fa fa-indent text"></i> <i class="fa fa-dedent text-active"></i>
+      </a></li>
+    </ul>
+    <!-- search -->
+    <form class="navbar-form navbar-left input-s-lg m-t m-l-n-xs hidden-xs" role="search">
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-btn">
+            <button type="submit" class="btn btn-sm bg-white btn-icon rounded">
+              <i class="fa fa-search"></i>
+            </button>
+          </span> <input type="text" class="form-control input-sm no-border rounded" placeholder="Search games, users ...">
+        </div>
+      </div>
+    </form>
+    <!-- right -->
+    <!-- 
+    <div class="navbar-right" ng-if="!logined">
+      <ul class="nav navbar-nav m-n hidden-xs nav-user user">
+        <li>login
+        </li>
+        <li>register
+        </li>
+      </ul>
+    </div>
+     -->
+    <div class="navbar-right">
+      <ul class="nav navbar-nav m-n hidden-xs nav-user user">
+        <!-- toolbar: notification -->
+        <li class="hidden-xs" dropdown on-toggle="toggled(open)"  ng-if="logined">
+          <a href id="notification-dropdown" dropdown-toggle class="dropdown-toggle lt">
+            <i class="icon-bell"></i><span class="badge badge-sm up bg-danger count">2</span>
+          </a>
+          <section class="dropdown-menu" template-url="tpl/menu/notificationMenu.html" aria-labelledby="notification-dropdown"/>
+          </section>
+        </li>
+        <!-- toolbar: end of notification -->
+        <!-- toolbar: user profile -->
+        <li class="dropdown" dropdown on-toggle="toggled(open)">
+          <a href id="user-profile-dropdown"  dropdown-toggle class="dropdown-toggle bg clear">
+            <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
+              <img ng-src="{{vm.user.avatarUrl}}" alt="{{vm.user.username}}">
+            </span>{{vm.user.username}}<b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu" template-url="tpl/menu/userProfileMenu.html" aria-labelledby="user-profile-dropdown" />
+        </li>
+        <!-- toolbar: end of user profile -->
+      </ul>
+    </div>
+  </header>

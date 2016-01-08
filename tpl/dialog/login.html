@@ -1,0 +1,50 @@
+<div class="modal-body">
+  <div class="row">
+    <div class="auth-logo">
+      <a href="/">
+        <img src="/images/logo-114.png">
+      </a>
+    </div>
+    <div class="auth-wrapper">
+      <form id="loginForm" name="loginForm" novalidate="novalidate" ng-submit="ctrl.login(loginForm)">
+        <input type="hidden" name="retour" ng-model="retour">
+        <div ng-messages=" loginForm.retour.$error" class="text-danger text-center-xs">
+          <div ng-message="server">{{ctrl.error}}</div>
+        </div>
+        <div class="form-group">
+          <label for="username">Username or Email</label>
+          <input type="text" class="form-control" name="username" id="username" type="text"
+                 placeholder="User name"
+                 ng-model="ctrl.user.username"
+                 ng-minlength="1"
+                 ng-maxlength="50"
+                 ng-pattern="/^[a-z0-9_-]{1,50}$/"
+                 required>
+
+          <div ng-messages="loginForm.username.$error" ng-if="loginForm.username.$dirty" class="has-error">
+            <div ng-messages-include="./tpl/message/form/login/username.errors.html"></div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" name="password" type="password"
+                 placeholder="Password"
+                 ng-model="ctrl.user.password"
+                 ng-minlength="1"
+                 ng-maxlength="50" ,
+                 ng-pattern="/^[a-z0-9_-]{1,50}$/"
+                 required>
+
+          <div ng-messages=" loginForm.password.$error" ng-if="loginForm.password.$dirty" class="has-error">
+            <div ng-messages-include="./tpl/message/form/login/password.errors.html"></div>
+          </div>
+        </div>
+        <input type="submit" value="Log in" class="btn btn-block btn-success">
+      </form>
+    </div>
+    <div class="auth-footer">
+      Forget Your Password?<br>
+      <a href="findPassword.html" target="_blank">Find it Here</a>
+    </div>
+  </div>
+</div>
