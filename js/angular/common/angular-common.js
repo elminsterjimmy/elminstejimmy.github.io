@@ -6,7 +6,8 @@ function common(logger, URLConstants) {
     ajaxSuccess: ajaxSuccess,
     ajaxFailed: ajaxFailed,
     reloadState: reloadState,
-    activedApp: URLConstants.dummy
+    activedApp: URLConstants.Dummy
+    //activedApp: URLConstants.Test
   };
 
   return service;

@@ -3,7 +3,7 @@
  */
 angular.module('grsApp').
   constant('URLConstants', {
-    "dummy" : {
+    "Dummy" : {
       "BaseUrl" : ".",
       "Service" : {
         "Meta" : {
@@ -32,7 +32,7 @@ angular.module('grsApp').
         },
       }
     },
-    "appUrl" : {
+    "Test" : {
       "BaseUrl" : "http://localhost:8080/v1.0",
       "Service" : {
         "BaseUserInfo" : {
@@ -49,6 +49,10 @@ angular.module('grsApp').
         },
         "Profile" : {
           "Url" : "/user/current/profile",
+          "Method" : "GET"
+        },
+        "Collection" : {
+          "Url" : "/collection/current",
           "Method" : "GET"
         },
       }

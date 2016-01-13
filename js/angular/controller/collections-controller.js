@@ -13,9 +13,14 @@ function collectionsCtrl(collectionsService, logger) {
   }
 
   function getCollections() {
-    return collectionsService.getAllCollectionList().then(function(data) {
-      vm.items = data;
-      return vm.items;
+    return collectionsService.getAllCollectionList().then(function(response) {
+      if (response.status == 200) {
+        vm.items = response.data.data.collections;
+      } else if (response.status == 403) {
+        // TODO auth timeout broadcast
+      } else {
+        // TODO server unavailable
+      }
     });
   }
 }

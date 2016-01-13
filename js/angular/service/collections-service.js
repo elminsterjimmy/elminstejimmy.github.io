@@ -1,7 +1,7 @@
 angular.
   module('grsApp').factory('collectionsService', collectionService);
 
-function collectionService(requestService, logger, URLConstants) {
+function collectionService(requestService, logger, common) {
   logger.info("init collection service.");
   
   var service = {
@@ -13,7 +13,8 @@ function collectionService(requestService, logger, URLConstants) {
 
   function getAllCollectionList(user) {
     logger.info("getAllCollectionList");
-    return requestService.request(URLConstants.dummy.BaseUrl + URLConstants.dummy.Service.Collection.Url);
+    var service = common.activedApp.Service.Collection;
+    return requestService.request(common.activedApp.BaseUrl + service.Url, service.Method);
   }
   
   function markRating(user, item) {

@@ -1,7 +1,7 @@
 angular.
   module('grsApp').factory('metaService', metaService);
 
-function metaService(requestService, logger, URLConstants) {
+function metaService(requestService, logger, common) {
   
   logger.info("init common service.");
   
@@ -11,6 +11,7 @@ function metaService(requestService, logger, URLConstants) {
   return service;
 
   function getMetaData() {
-    return requestService.request(URLConstants.dummy.BaseUrl + URLConstants.dummy.Service.Meta.Url);
+    var service = common.activedApp.Service.Meta;
+    return requestService.request(common.activedApp.BaseUrl + service.Url, service.Method);
   }
 }

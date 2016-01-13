@@ -8,6 +8,9 @@
         </div>
         <!-- the overlay -->
         <div class="item-overlay opacity r r-2x bg-black">
+          <div class="top">
+            <span class="pull-right m-t-sm m-r-sm badge bg-info">{{collection.notification}}</span>
+          </div>
           <div class="text-info padder m-t-sm text-sm">
             <rating ng-model="collection.rating"></rating>
           </div>
@@ -23,7 +26,7 @@
 
               <div class="progress_outer center">
                 <span>{{collection.progress}}%</span>
-                <div style="width: {{collection.progress}}%;"></div>
+                <div ng-style="{ 'width': collection.progress + '%' }"></div>
               </div>
             </div>
           </div>
@@ -33,8 +36,7 @@
             </a>
           </div>
         </div>
-        {{collection.cover}}
-        <a href="#"><img ng-src="{{collection.cover}}" alt="" class="r r-2x img-full" ></a>
+        <a href="#"><img ng-src="{{collection.cover}}" alt="{{collection.title}}" class="r r-2x img-full" ></a>
       </div>
       <div class="padder-v">
         <a class="text-ellipsis">{{collection.title}}</a>
