@@ -35,6 +35,10 @@ angular.module('grsApp').
     "Test" : {
       "BaseUrl" : "http://localhost:8080/v1.0",
       "Service" : {
+        "Meta" : {
+          "Url" : "/test",
+          "Method" : "GET"
+        },
         "BaseUserInfo" : {
           "Url" : "/user/current",
           "Method" : "GET"

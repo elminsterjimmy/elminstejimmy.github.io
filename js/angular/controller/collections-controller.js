@@ -15,7 +15,7 @@ function collectionsCtrl(collectionsService, logger) {
   function getCollections() {
     return collectionsService.getAllCollectionList().then(function(response) {
       if (response.status == 200) {
-        vm.items = response.data.data.collections;
+        vm.items = response.data.data;
       } else if (response.status == 403) {
         // TODO auth timeout broadcast
       } else {
