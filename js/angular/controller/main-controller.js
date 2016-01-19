@@ -8,6 +8,7 @@ function mainCtrl($rootScope, $scope, $state, $stateParams, $uibModal, common, E
     userService.getUserInfo().then(function(response) {
       if (200 === response.status) {
         $rootScope.loggedIn = true;
+        $rootScope.currentUser = response.data.data;
         // only invoke children
         $scope.$broadcast(EventConstants.authAvailableEvent);
       } else {

@@ -3,24 +3,34 @@ angular.module('grsApp').factory('profileService', profileService);
 function profileService(requestService, common, logger, URLConstants, Static) {
   logger.info("init profile service.");
 
+  var profileServices = common.activedApp.Service.Profile;
+
   var service = {
-    "getCurrentUserProfile" : getCurrentUserProfile,
-    "getAllLocations" : getAllLocations,
     "getUserProfile" : getUserProfile,
-    "updateUserProfile" : updateUserProfile,
+    "getAllLocations" : getAllLocations,
+    "updateUserBasicProfile" : updateUserBasicProfile,
+    "updateUserGameProfile" : updateUserGameProfile,
+    "updateUserPassword" : updateUserPassword,
   };
 
-  function getCurrentUserProfile() {
-    var service = common.activedApp.Service.Profile;
-    return requestService.request(common.activedApp.BaseUrl + service.Url, service.Method);
+  function getUserProfile(username) {
+    var service = profileServices.GetUserProfile;
+    return requestService.request(common.activedApp.BaseUrl + sprintf(service.Url, username), service.Method);
   }
 
-  function getUserProfile() {
+  function updateUserBasicProfile(data) {
+    var service = profileServices.UpdateUserBasicProfile;
+    return requestService.request(common.activedApp.BaseUrl + sprintf(service.Url, data.username), service.Method, data);
   }
 
-  function updateUserProfile() {
-
+  function updateUserGameProfile(data) {
+    var service = profileServices.UpdateUserGameProfile;
+    return requestService.request(common.activedApp.BaseUrl + sprintf(service.Url, data.username), service.Method, data);
   }
+
+  function updateUserPassword(data) {
+  }
+
 
   function getAllLocations() {
     return requestService.request(Static.BaseUrl + Static.json.locations);

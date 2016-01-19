@@ -7,7 +7,7 @@
         <div class="panel-body">
           <uib-accordion close-others="true">
             <uib-accordion-group heading="Basic Profiles" is-open="basicProfile.open">
-              <form class="form-horizontal">
+              <form class="form-horizontal" ng-submit="profile.services.updateBasicProfile()">
                 <div class="form-group">
                   <label class="control-label col-sm-2" for="email">Email:</label>
 
@@ -120,7 +120,7 @@
               </form>
             </uib-accordion-group>
             <uib-accordion-group heading="Game Profiles"  is-open="gameProfile.open">
-              <form class="form-horizontal">
+              <form class="form-horizontal" ng-submit="profile.services.updateGameProfile()">
 
                 <div class="form-group">
                   <label class="control-label col-sm-2" for="psnUsername">PSN Account:</label>

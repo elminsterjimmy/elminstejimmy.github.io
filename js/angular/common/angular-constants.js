@@ -10,25 +10,43 @@ angular.module('grsApp').
           "Url" : "/json/dummy/meta.json",
           "Method" : "GET"
         },
-        "BaseUserInfo" : {
-          "Url" : "/json/dummy/user.json",
-          "Method" : "GET"
-        },
-        "Login" : {
-          "Url" : "/json/dummy/login.json",
-          "Method" : "GET"
-        },
-        "Register" : {
-          "Url" : "/json/dummy/register.json",
-          "Method" : "GET"
+        "User" : {
+          "BaseInfo" : {
+            "Url" : "/json/dummy/user.json",
+            "Method" : "GET"
+          },
+          "Login" : {
+            "Url" : "/json/dummy/login.json",
+            "Method" : "GET"
+          },
+          "Register" : {
+            "Url" : "/json/dummy/register.json",
+            "Method" : "GET"
+          },
         },
         "Collection" : {
-          "Url" : "/json/dummy/collections.json",
-          "Method" : "GET"
+          "GetUserCollection" : {
+            "Url" : "/json/dummy/%s/collections.json",
+            "Method" : "GET"
+          },
         },
         "Profile" : {
-          "Url" : "/json/dummy/profile.json",
-          "Method" : "GET"
+          "GetUserProfile" : {
+            "Url" : "/json/dummy/%s/profile.json",
+            "Method" : "GET"
+          },
+          "UpdateUserBasicProfile" : {
+            "Url" : "/user/profile/%s/postDummy.json",
+            "Method" : "POST"
+          },
+          "UpdateUserGameProfile" : {
+            "Url" : "/user/profile/%s/postDummy.json",
+            "Method" : "POST"
+          },
+          "UpdateUserPassword" : {
+            "Url" : "/user/profile/%s/postDummy.json",
+            "Method" : "POST"
+          }
         },
       }
     },
@@ -39,25 +57,43 @@ angular.module('grsApp').
           "Url" : "/test",
           "Method" : "GET"
         },
-        "BaseUserInfo" : {
-          "Url" : "/user/current",
-          "Method" : "GET"
-        },
-        "Login" : {
-          "Url" : "/user/login",
-          "Method" : "POST"
-        },
-        "Register" : {
-          "Url" : "/user",
-          "Method" : "POST"
+        "User" : {
+          "BaseInfo" : {
+            "Url" : "/user/current",
+            "Method" : "GET"
+          },
+          "Login" : {
+            "Url" : "/user/login",
+            "Method" : "POST"
+          },
+          "Register" : {
+            "Url" : "/user",
+            "Method" : "POST"
+          },
         },
         "Profile" : {
-          "Url" : "/user/current/profile",
-          "Method" : "GET"
+          "GetUserProfile" : {
+            "Url" : "/user/profile/%s",
+            "Method" : "GET"
+          },
+          "UpdateUserBasicProfile" : {
+            "Url" : "/user/profile/%s/basic",
+            "Method" : "POST"
+          },
+          "UpdateUserGameProfile" : {
+            "Url" : "/user/profile/%s/game",
+            "Method" : "POST"
+          },
+          "UpdateUserPassword" : {
+            "Url" : "/user/profile/%s/password",
+            "Method" : "POST"
+          }
         },
         "Collection" : {
-          "Url" : "/collection/current",
-          "Method" : "GET"
+          "GetUserCollection" : {
+            "Url" : "/collection/%s",
+            "Method" : "GET"
+          },
         },
       }
     }

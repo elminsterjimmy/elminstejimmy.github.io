@@ -19,6 +19,10 @@ function userCtrl($rootScope, $scope, $modalInstance, $cookies, EventConstants, 
           var authToken = data.headers('X-AUTH-TOKEN');
           $cookies.put("USER-TOKEN", authToken);
           $rootScope.$broadcast(EventConstants.authAvailableEvent);
+        } else if (data.status == 500) {
+          logger.info("500 error");
+          $scope.loginForm.retour.$setValidity("server", false);
+          vm.error = data.data.errors[0].localizedErrorMessage;
         } else if (data.status == 401) {
           logger.info("401 error");
           $scope.loginForm.retour.$setValidity("server", false);

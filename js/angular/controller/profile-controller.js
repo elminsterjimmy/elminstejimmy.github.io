@@ -1,8 +1,13 @@
 angular.module('grsApp').controller('profileController', profileCtrl);
 
-function profileCtrl(profileService, logger) {
+function profileCtrl($rootScope, profileService, logger) {
   var vm = this;
   vm.default = {};
+
+  vm.services = {
+    "updateBasicProfile": updateBasicProfile,
+    "updateGameProfile": updateGameProfile
+  };
 
   activate();
 
@@ -14,7 +19,7 @@ function profileCtrl(profileService, logger) {
   }
 
   function getCurrentUserProfile() {
-    return profileService.getCurrentUserProfile().then(function (response) {
+    return profileService.getUserProfile($rootScope.currentUser.username).then(function (response) {
       if (response.status == 200) {
         vm.data = response.data.data;
         var birthday = vm.data['birthday'];
@@ -41,13 +46,13 @@ function profileCtrl(profileService, logger) {
   }
 
   function initFilters() {
-    vm.filterLocationLevel1 = function(locations) {
+    vm.filterLocationLevel1 = function (locations) {
       return locations.level === 1;
     }
-    vm.filterLocationLevel2 = function(locations) {
+    vm.filterLocationLevel2 = function (locations) {
       return locations.parent_id === vm.data.livePlaceLv1;
     }
-    vm.filterLocationLevel3 = function(locations) {
+    vm.filterLocationLevel3 = function (locations) {
       return locations.parent_id === vm.data.livePlaceLv2;
     }
   }
@@ -131,5 +136,37 @@ function profileCtrl(profileService, logger) {
     //}
   }
 
-  return this;
+  function updateGameProfile() {
+    return profileService.updateUserGameProfile(vm.data).then(function (response) {
+      if (response.status == 200) {
+        var responseData = response.data;
+        if ("OK" != responseData.status) {
+          // TODO some error happened when updating the profile.
+        }
+      } else if (response.status == 403) {
+        // TODO auth timeout broadcast
+      } else if (response.status == 500) {
+        // server error
+      } else {
+        // TODO server unavailable
+      }
+    });
+  }
+
+  function updateBasicProfile() {
+    return profileService.updateUserBasicProfile(vm.data).then(function (response) {
+      if (response.status == 200) {
+        var responseData = response.data;
+        if ("OK" != responseData.status) {
+          // TODO some error happened when updating the profile.
+        }
+      } else if (response.status == 403) {
+        // TODO auth timeout broadcast
+      } else if (response.status == 500) {
+        // server error
+      } else {
+        // TODO server unavailable
+      }
+    });
+  }
 }

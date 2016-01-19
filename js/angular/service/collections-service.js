@@ -3,7 +3,9 @@ angular.
 
 function collectionService(requestService, logger, common) {
   logger.info("init collection service.");
-  
+
+  var collectionServices = common.activedApp.Service.Collection;
+
   var service = {
       getAllCollectionList: getAllCollectionList,
       markRating: markRating,
@@ -11,10 +13,10 @@ function collectionService(requestService, logger, common) {
   };
   return service;
 
-  function getAllCollectionList(user) {
+  function getAllCollectionList(username) {
     logger.info("getAllCollectionList");
-    var service = common.activedApp.Service.Collection;
-    return requestService.request(common.activedApp.BaseUrl + service.Url, service.Method);
+    var service = collectionServices.GetUserCollection;
+    return requestService.request(common.activedApp.BaseUrl + sprintf(service.Url, username), service.Method);
   }
   
   function markRating(user, item) {

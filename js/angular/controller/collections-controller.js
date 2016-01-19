@@ -1,6 +1,6 @@
 angular.module('grsApp').controller('collectionsController', collectionsCtrl);
 
-function collectionsCtrl(collectionsService, logger) {
+function collectionsCtrl($rootScope, collectionsService, logger) {
   var vm = this;
   vm.items = [];
 
@@ -13,7 +13,7 @@ function collectionsCtrl(collectionsService, logger) {
   }
 
   function getCollections() {
-    return collectionsService.getAllCollectionList().then(function(response) {
+    return collectionsService.getAllCollectionList($rootScope.currentUser.username).then(function(response) {
       if (response.status == 200) {
         vm.items = response.data.data;
       } else if (response.status == 403) {

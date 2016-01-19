@@ -13,7 +13,7 @@ function enableWhiteList($sceDelegateProvider) {
 }
 
 function requestService($http, $cookies, logger, common) {
-  logger.info("init user service.");
+  logger.info("init request service.");
 
   var service = {
     request: request
@@ -51,6 +51,4 @@ function requestService($http, $cookies, logger, common) {
     }).then(successCallback)
       .catch(failedCallback);
   }
-
-
 }
